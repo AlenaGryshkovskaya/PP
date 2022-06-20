@@ -1,0 +1,6 @@
+[defaults]
+project=boilerplate
+org=technology
+
+[log]
+level=debug

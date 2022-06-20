@@ -1,0 +1,13 @@
+<ruleset name="technology-standard">
+    <description>Technology Standard</description>
+
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+    <rule ref="PSR2"/>
+
+    <file>src</file>
+    <arg name="basepath" value="."/>
+
+    <exclude-pattern>*/migrations/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>web/assets/</exclude-pattern>
+</ruleset>

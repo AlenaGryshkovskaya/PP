@@ -1,0 +1,6 @@
+.git*
+/.rsync-exclude
+/environment
+/config/secret.php
+/runtime/logs/*
+/web/index-test.php

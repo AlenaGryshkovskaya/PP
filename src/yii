@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+$environment = is_file(__DIR__ . '/environment')
+    ? trim(file_get_contents(__DIR__ . '/environment'))
+    : 'prod';
+
+$envConfig = is_file(__DIR__ . "/config/console.{$environment}.php")
+    ? require __DIR__ . "/config/console.{$environment}.php"
+    : [];
+
+defined('YII_ENV') or define('YII_ENV', $environment);
+defined('YII_ENV_PROD') or define('YII_ENV_PROD', strpos(YII_ENV, 'prod') !== false);
+defined('YII_ENV_DEV') or define('YII_ENV_DEV', strpos(YII_ENV, 'prod') === false);
+defined('YII_ENV_TEST') or define('YII_ENV_TEST', strpos(YII_ENV, 'test') !== false);
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/yiisoft/yii2/Yii.php';
+
+$config = require __DIR__ . '/config/console.php';
+
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);

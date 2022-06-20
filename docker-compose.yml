@@ -1,0 +1,43 @@
+version: '2.1'
+services:
+  codeception:
+    image: repo.infranet.co:5000/base-php:8.0
+    depends_on:
+      chrome:
+        condition: service_healthy
+      web:
+        condition: service_started
+    volumes:
+      - ./:/project
+    user: root
+    entrypoint:
+      - bash
+      - -c
+      - "cd /project && php tests/bin/yii migrate --interactive=0 && php src/vendor/bin/codecept run acceptance --steps --debug"
+  web:
+    image: repo.infranet.co:5000/base-apache:php80
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: namonas-site-test
+      PGPASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+  chrome:
+    image: selenium/standalone-chrome:3.141.0
+    ports:
+      - 4444
+    environment:
+      - no_proxy=localhost
+      - SE_OPTS=-port 4444
+    shm_size: 2G
+    healthcheck:
+      test: [ "CMD", "curl", "-f", " http://chrome:4444/wd/hub/status" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3

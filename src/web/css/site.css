@@ -1,0 +1,312 @@
+html,
+body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrap {
+    box-sizing: border-box;
+    min-height: 46%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 0;
+    margin-top: -70px;
+}
+
+.header {
+    height: 540px;
+    background: url(../i/header-main-bg.png) center right no-repeat; /* fallback */
+    background: url(../i/header-main-bg.png) center right no-repeat, linear-gradient(90deg, #3A5782 0%, #6391D5 50%);
+}
+
+.header.car-insurance {
+    background: url(../i/car-insurance-bg.png) center right no-repeat; /* fallback */
+    background: url(../i/car-insurance-bg.png) center right no-repeat, linear-gradient(90deg, #3A5782 0%, #6391D5 50%);
+}
+
+.header.mortgage {
+    background: url(../i/mortgage-bg.png) center right no-repeat; /* fallback */
+    background: url(../i/mortgage-bg.png) center right no-repeat, linear-gradient(90deg, #3A5782 0%, #6391D5 50%);
+}
+
+.header-gradient-center {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 150px;
+    height: 540px;
+    background: linear-gradient(90deg, #6391D4 0%, rgba(99, 145, 212, 0.85) 33.85%, rgba(99, 145, 212, 0) 100%);
+}
+
+.nav {
+    padding-top: 32px;
+    width: fit-content;
+}
+
+.nav li {
+    margin-right: 64px;
+}
+
+.nav li:last-child {
+    margin-right: 0;
+}
+
+.nav li > a {
+    color:#FFFFFF;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.nav li.v-active > a {
+    font-weight: 700;
+}
+
+.header-info {
+    margin-top: 78px;
+    max-width: 50%;
+    color:#FFFFFF;
+    font-size: 48px;
+    line-height: 72px;
+}
+
+.header-info .header-text {
+    margin-top: 32px;
+    font-size: 20px;
+    line-height: 30px;
+    padding-right: 80px;
+}
+
+.card-block .card {
+    background: #FFFFFF;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    border: none;
+    margin-top: 40px;
+}
+
+.card-block .card .card-body {
+    padding: 40px 64px;
+}
+
+.card-title {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.card-text {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+.card-block .card .card-body a.btn.btn-primary {
+    width: 100%;
+}
+
+.additional-info-block {
+    margin: 160px 0;
+}
+.additional-info-block .additional-info-title {
+    color: #434343;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 32px;
+}
+
+.additional-info-block.main {
+    margin-bottom: 170px;
+}
+
+.additional-info-block .card {
+    border: none;
+    margin-top: 20px;
+}
+
+.additional-info-block .card .card-body {
+    color:#434343;
+    padding: 0;
+}
+
+.additional-info-block .card .card-body .card-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 16px;
+}
+
+.additional-info-block .text-center {
+    margin-top: 32px;
+}
+
+.discount-save-block {
+    padding: 44px 0;
+    background: #DFEAFB;
+    margin-top: 160px;
+}
+
+.discount-save-block .discount-title {
+    color: #434343;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 16px;
+}
+
+.discount-save-block .discount-text {
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+}
+
+.footer {
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #3A5782 0%, #6391D5 100%);
+    padding: 56px 0;
+}
+
+.footer .contact-title {
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 16px;
+}
+
+.footer .contact-text {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 48px;
+}
+
+#contact-form input {
+    background: none;
+    padding: 20px 30px;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    color:#FFFFFF;
+    height: 64px;
+    margin-bottom: 10px;
+}
+
+#contact-form input.is-invalid {
+    border: 1px solid #FF5757;
+}
+
+#contact-form input::placeholder {
+    color:#BCBCBC;
+    opacity: 1;
+}
+
+#contact-form button {
+    background-color: #FFFFFF;
+    padding: 20px 64px;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #434343;
+    font-weight: 400;
+    margin-top: 22px;
+}
+
+#contact-form button:hover {
+    background: #DFEAFB;
+    color:#434343;
+}
+
+.contact-tg-link {
+    padding-left: 48px;
+    background-image: url(../i/tg-icon.png);
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    display: inline-block;
+    margin-top: 48px;
+    min-height: 32px;
+    line-height: 32px;
+    color:#FFFFFF;
+}
+
+.contact-tg-link:hover {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+a.btn.btn-primary {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #4A6DA2;
+    padding: 20px;
+    border: 1px solid #4A6DA2;
+    border-radius: 4px;
+    background: none;
+    width: 355px;
+    margin-top: 26px;
+}
+
+a.btn.btn-primary:hover {
+    color:#FFFFFF;
+    background: #4A6DA2;
+}
+
+
+a.btn.btn-primary.dark {
+    background: #4A6DA2;
+    padding: 20px 89px;
+    color: #FFFFFF;
+    border: none;
+}
+
+.wrap .discount-save-block .container .card-block{
+    display: flex;
+    align-items: center;
+}
+
+a.btn.btn-primary {
+    
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1110px;
+    }
+}
+
+@media(max-width: 767px) {
+    .additional-info-block .card .card-body {
+        display: flex;
+        align-items: flex-start;
+    }
+    .tix-tex{
+        margin-left: 27px;
+        margin-top: -14px;
+    }
+    .wrap .discount-save-block .container .card-block{
+       
+    }
+}

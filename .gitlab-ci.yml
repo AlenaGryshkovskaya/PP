@@ -1,0 +1,65 @@
+image:
+  name: repo.infranet.co:5000/base-php:8.0
+  entrypoint: ["/bin/sh", "-c"]
+
+cache:
+  key: ${CI_JOB_NAME}
+  paths:
+    - vendor/
+    - /var/lib/apt/lists/*
+    - /tmp/*
+    - /var/tmp/*
+    - /usr/share/doc/*
+
+stages:
+  - syntax
+  - tests
+
+variables:
+  COMPOSER_CACHE_DIR: build/.composer
+  POSTGRES_DB: namonas-site-test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_HOST_AUTH_METHOD: trust
+
+before_script:
+  - curl --show-error --silent https://getcomposer.org/installer | php
+  - php composer.phar install --ignore-platform-reqs --no-scripts --prefer-dist --no-progress
+  - rm -f composer.phar
+  - cp src/config/secret.test.sample.php src/config/secret.test.php
+  - echo test > src/environment
+
+syntax:phpcs:
+  stage: syntax
+  cache:
+    key: build-cache
+    paths: [ build/.composer ]
+  script:
+    - ./src/vendor/bin/phpcs --error-severity=1 --warning-severity=8 --extensions=php
+
+syntax:phpmd:
+  stage: syntax
+  cache:
+    key: build-cache
+    paths: [ build/.composer ]
+  script:
+    - ./src/vendor/bin/phpmd . text codesize --suffixes php --exclude vendor
+
+tests:php8.0:
+  stage: tests
+  services:
+    - postgres:12.2-alpine
+  cache:
+    key: build-cache
+    paths: [ build/.composer ]
+  script:
+    - echo "xdebug.mode = coverage" >> /etc/php.ini
+    - ./tests/bin/yii migrate --interactive=0
+    - ./tests/bin/yii migrate --migrationPath=./tests/_migrations --interactive=0
+    - ./src/vendor/bin/codecept run unit,functional --steps --xml --phpunit-xml --html --coverage --coverage-xml --coverage-html --no-colors
+  artifacts:
+    paths:
+      - tests/_output
+    reports:
+      junit: tests/_output/report.xml
+  coverage: '/^\s*Lines:\s*(\d+.\d+\%)/'
